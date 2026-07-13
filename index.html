@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arushi Sagar — AI/ML & Data Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14110E;
+    --bg-panel: #1C1712;
+    --line: #322A20;
+    --text: #EAE4D8;
+    --muted: #A89E91;
+    --amber: #C88A54;
+    --sage: #8DA47E;
+    --cream: #E6C68B;
+    --blue: #6FA3DA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:16.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--blue); color:#14110E;}
+  a{color:inherit;}
+
+  .wrap{max-width:960px; margin:0 auto; padding:0 30px;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter:blur(10px);
+    background:rgba(20,17,14,0.85);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 30px; max-width:960px; margin:0 auto;
+  }
+  .logo{font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--blue); letter-spacing:0.5px;}
+  .navlinks{display:flex; gap:24px; font-family:'JetBrains Mono',monospace; font-size:13.5px;}
+  .navlinks a{color:var(--muted); text-decoration:none; transition:color .2s;}
+  .navlinks a:hover{color:var(--blue);}
+
+  /* HERO */
+  .hero{padding:88px 0 60px; position:relative;}
+  .hero-top{display:flex; align-items:center; gap:26px; margin-bottom:30px;}
+  .hero-photo{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    overflow:hidden;
+    flex-shrink:0;
+    border:2px solid var(--blue);
+}
+  .hero-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block;}
+  .hero-id .name{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:34px; letter-spacing:-0.5px;
+  }
+  .hero-id .role{
+    font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--muted); margin-top:6px;
+  }
+  .tag-row{
+    display:flex; gap:11px; margin-top:26px; flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace; font-size:13px;
+  }
+  .tag-pill{padding:6px 13px; border:1px solid var(--line); border-radius:20px; color:var(--muted);}
+  .tag-pill:nth-child(1){border-color:var(--sage); color:var(--sage);}
+  .tag-pill:nth-child(2){border-color:var(--blue); color:var(--blue);}
+
+  h1{
+    font-family:'Space Grotesk',sans-serif; font-weight:600;
+    font-size:clamp(23px, 3.3vw, 32px); line-height:1.3; letter-spacing:-0.3px;
+    max-width:34ch; margin-top:26px;
+  }
+  h1 .grad{
+    background:linear-gradient(90deg, var(--sage), var(--blue) 45%, var(--cream) 75%, var(--amber));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{margin-top:22px; font-size:17.5px; color:var(--muted); max-width:58ch;}
+  .hero-sub b{color:var(--text); font-weight:500;}
+  .hero-links{display:flex; gap:15px; margin-top:34px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    font-family:'JetBrains Mono',monospace; font-size:14px;
+    padding:12px 20px; border-radius:8px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; transition:all .2s;
+    border:1px solid var(--line);
+  }
+  .btn-primary{background:var(--text); color:var(--bg); border-color:var(--text); font-weight:600;}
+  .btn-primary:hover{background:var(--cream); border-color:var(--cream);}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover{border-color:var(--blue); color:var(--blue);}
+  .btn-icon{padding:12px; width:46px; height:46px; justify-content:center;}
+  .btn-icon svg{width:17px; height:17px;}
+
+  .heatgrid{display:grid; grid-template-columns:repeat(28, 1fr); gap:3px; margin-top:38px; max-width:440px;}
+  .cell{width:100%; aspect-ratio:1; border-radius:2px; background:var(--bg-panel); animation:pulse 4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35;} 50%{opacity:1;}}
+  .grid-caption{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:11px; max-width:440px;}
+
+  section{padding:60px 0; border-top:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; gap:15px; margin-bottom:32px;}
+  .section-num{font-family:'JetBrains Mono',monospace; font-size:13.5px; color:var(--muted);}
+  h2{font-family:'Space Grotesk',sans-serif; font-size:25px; font-weight:600;}
+  h3{font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:600; margin-bottom:15px;}
+
+  /* PROJECTS */
+  .project{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:11px;
+    padding:22px 26px; margin-bottom:24px; transition:border-color .2s;
+  }
+  .project:hover{border-color:var(--blue);}
+  .project-header-flex{display:flex; justify-content:space-between; align-items:flex-start; gap:14px;}
+  .project-title-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .project-title{font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600;}
+  .status-ongoing{
+    font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--cream);
+    border:1px solid var(--cream); padding:2px 8px; border-radius:20px; white-space:nowrap;
+  }
+  .project-links-visible{
+    display:flex; gap:14px; align-items:center; margin-top:9px;
+    font-family:'JetBrains Mono',monospace; font-size:13px;
+  }
+  .project-links-visible a{color:var(--blue); text-decoration:none;}
+  .project-links-visible a:hover{color:var(--cream);}
+  .project-summary{font-size:15px; color:var(--muted); margin-top:11px; max-width:64ch;}
+
+  .expand-btn{
+    flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:8px; border:1px solid var(--line);
+    background:transparent; cursor:pointer; transition:all .2s; margin-top:2px;
+  }
+  .expand-btn:hover{border-color:var(--blue);}
+  .expand-btn svg{width:15px; height:15px; color:var(--muted); transition:transform .25s ease;}
+  .expand-btn.open svg{transform:rotate(180deg); color:var(--blue);}
+
+  .project-details{
+    max-height:0; overflow:hidden; transition:max-height .3s ease, margin-top .3s ease;
+  }
+  .project-details.open{max-height:600px; margin-top:15px;}
+  .project-bullets{padding-left:19px; color:var(--muted); font-size:15px;}
+  .project-bullets li{margin-bottom:5px;}
+  .project-bullets b{color:var(--text); font-weight:500;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px; margin-top:15px;}
+  .tag{font-family:'JetBrains Mono',monospace; font-size:11.5px; padding:5px 10px; border:1px solid var(--line); border-radius:5px; color:var(--muted);}
+
+  /* MORE PROJECTS CALLOUT */
+  .more-projects{
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    background:var(--bg-panel); border:1px solid var(--sage); border-radius:11px;
+    padding:24px 26px; margin-top:8px;
+  }
+  .more-projects-left{display:flex; align-items:center; gap:16px;}
+  .more-projects-icon{
+    width:46px; height:46px; border-radius:50%; background:rgba(141,164,126,0.12);
+    border:1px solid var(--sage); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .more-projects-icon svg{width:20px; height:20px; color:var(--sage);}
+  .more-projects-title{font-family:'Space Grotesk',sans-serif; font-size:16.5px; font-weight:600;}
+  .more-projects-sub{font-size:13.5px; color:var(--muted); margin-top:3px;}
+  .more-projects .btn{white-space:nowrap;}
+
+  /* SKILLS */
+  .skill-groups{display:grid; grid-template-columns:1fr 1fr; gap:24px 28px;}
+  .skill-group{padding:18px 20px; border-radius:10px; border:1px solid var(--line);}
+  .skill-group-title{font-family:'JetBrains Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:1px; margin-bottom:9px; color:var(--cream);}
+  .skill-list{color:var(--muted); font-size:14.5px;}
+
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .stat{background:var(--bg-panel); border:1px solid var(--line); border-radius:11px; padding:22px;}
+  .stat-num{font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; color:var(--blue);}
+  .stat-label{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); margin-top:7px;}
+
+  /* OUTSIDE THE CLASSROOM */
+  .otc-block{margin-bottom:36px;}
+  .otc-block:last-child{margin-bottom:0;}
+  .oss-item{
+    padding:16px 20px; border:1px solid var(--line); border-radius:9px; background:var(--bg-panel);
+  }
+  .oss-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
+  .oss-repo{font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--text);}
+  .oss-status{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue); border:1px solid var(--blue); padding:3px 9px; border-radius:20px; white-space:nowrap; height:fit-content;}
+  .oss-desc{font-size:14px; color:var(--muted); margin-top:8px; max-width:60ch; line-height:1.55;}
+  .otc-note{
+    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); margin-top:12px;
+    padding-left:14px; border-left:2px solid var(--line); max-width:60ch; line-height:1.6;
+  }
+
+  .cert-row{display:flex; flex-wrap:wrap; gap:11px;}
+  .cert{font-family:'JetBrains Mono',monospace; font-size:13px; padding:9px 15px; border:1px solid var(--line); border-radius:8px; color:var(--muted);}
+
+  /* CONTACT */
+  .contact-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:9px; align-items:center;}
+  .contact-copy{font-size:16.5px; color:var(--muted); max-width:58ch; margin-top:14px; margin-bottom:26px;}
+  .btn-fill{background:var(--text); color:var(--bg); border-color:var(--text); font-weight:600;}
+  .btn-fill:hover{background:var(--cream); border-color:var(--cream);}
+  .btn svg{width:15px; height:15px;}
+
+  footer{padding:54px 0 74px; text-align:center;}
+  .footer-tagline{font-family:'Space Grotesk',sans-serif; font-size:15px; color:var(--text); font-weight:500;}
+  .footer-text{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--muted); display:flex; align-items:center; justify-content:center; gap:8px; margin-top:10px;}
+  .footer-text a{color:var(--blue); display:inline-flex; align-items:center; gap:6px; text-decoration:none;}
+  .footer-text svg{width:14px; height:14px;}
+
+  @media(max-width:640px){
+    .skill-groups{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:1fr 1fr;}
+    .heatgrid{grid-template-columns:repeat(16,1fr);}
+    nav{padding:17px 22px;}
+    .navlinks{gap:15px; font-size:12px;}
+    .hero-top{gap:17px;}
+    .hero-photo{width:76px; height:76px;}
+    .hero-id .name{font-size:26px;}
+    .more-projects{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">arushi.sagar()</div>
+    <div class="navlinks">
+      <a href="#projects">projects</a>
+      <a href="#outside">extras</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <div class="hero-top">
+      <div class="hero-photo"><img src="profile.jpg" alt="Arushi Sagar"></div>
+      <div class="hero-id">
+        <div class="name">Arushi Sagar</div>
+        <div class="role">Pre-final year student · CSE (AI/ML)</div>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="tag-pill">AI/ML</span>
+      <span class="tag-pill">Data Analytics</span>
+    </div>
+
+    <h1>AI/ML, data analytics, and occasionally disappearing down research rabbit holes.</h1>
+    <p class="hero-sub" style="margin-top:12px;">
+      Open to internships, freelance work, collaborations, and interesting problems in general. Reach out if
+      you're hiring or you'd like to work together, or just talk about a research paper or a weird dataset.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="/ArushiCV.pdf" target="_blank">Resume ↓</a>
+      <a class="btn btn-ghost btn-icon" href="https://github.com/arushiiii18" target="_blank" aria-label="GitHub" title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a class="btn btn-ghost btn-icon" href="https://www.linkedin.com/in/arushi-sagar/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708C16 15.487 15.474 16 14.825 16H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.52 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.174-.432.57-.879 1.235-.879.87 0 1.219.662 1.219 1.634v3.866h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+      </a>
+      <a class="btn btn-ghost btn-icon" href="mailto:arushisagar18@gmail.com" aria-label="Email" title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3h13A1.5 1.5 0 0116 4.5v7A1.5 1.5 0 0114.5 13h-13A1.5 1.5 0 010 11.5v-7A1.5 1.5 0 011.5 3zm.2 1L8 8.4 14.3 4H1.7zM1 5.1v6.4c0 .3.2.5.5.5h13a.5.5 0 00.5-.5V5.1L8.3 9.6a.5.5 0 01-.6 0L1 5.1z"/></svg>
+      </a>
+    </div>
+
+    <div class="heatgrid" id="heatgrid"></div>
+    <div class="grid-caption">a segment from InfraUrban's heat-risk grid — 24 zones × 6 cities, simulated here</div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head"><span class="section-num">01</span><h2>Projects</h2></div>
+
+    <div class="project">
+      <div class="project-header-flex">
+        <div style="flex:1; min-width:0;">
+          <div class="project-title-row">
+            <div class="project-title">PipelineGuardian — LLM-Orchestrated ML Pipeline Auditor</div>
+            <span class="status-ongoing">ongoing</span>
+          </div>
+          <div class="project-links-visible">
+            <a href="https://github.com/arushiiii18/pipelineguardian" target="_blank">github ↗</a>
+            <a href="https://pipelineguardian-eight.vercel.app/" target="_blank">live demo ↗</a>
+          </div>
+          <div class="project-summary">Catches data leakage and reproducibility bugs in ML notebooks automatically, calling an LLM only when static analysis alone can't judge the call.</div>
+        </div>
+        <button class="expand-btn" onclick="toggleProject(this)" aria-label="Expand details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 5.5l6.5 6 6.5-6"/></svg>
+        </button>
+      </div>
+      <div class="project-details">
+        <ul class="project-bullets">
+          <li>AST-based static analyzer detecting data leakage and reproducibility gaps across .ipynb/.py files — <b>1.0 precision/recall</b> on a 12-fixture eval suite, backed by 29 automated tests</li>
+          <li>LangChain agent that <b>conditionally invokes an LLM</b> (Groq/Llama-3.3-70B), calling it only when schema signals warrant judgment on train/test split validity — verified against true-negative cases to avoid over-flagging</li>
+          <li>Shipped as a CLI, FastAPI backend, and frontend, deployed end-to-end on Render and Vercel</li>
+        </ul>
+        <div class="stack"><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Groq</span><span class="tag">FastAPI</span><span class="tag">Pandas</span><span class="tag">Pydantic</span><span class="tag">pytest</span><span class="tag">AST</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header-flex">
+        <div style="flex:1; min-width:0;">
+          <div class="project-title-row">
+            <div class="project-title">InfraUrban — Urban Heat Intelligence Platform</div>
+          </div>
+          <div class="project-links-visible">
+            <a href="https://github.com/arushiiii18/urban-heat-intelligence" target="_blank">github ↗</a>
+            <a href="https://urban-heat-intelligence.streamlit.app/" target="_blank">live demo ↗</a>
+          </div>
+          <div class="project-summary">Real-time urban heat risk scoring across 24 zones in 6 Indian cities, cutting RMSE 61.9% over baseline with XGBoost and SHAP.</div>
+        </div>
+        <button class="expand-btn" onclick="toggleProject(this)" aria-label="Expand details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 5.5l6.5 6 6.5-6"/></svg>
+        </button>
+      </div>
+      <div class="project-details">
+        <ul class="project-bullets">
+          <li>XGBoost heat-risk model trained on <b>1M+ hourly climate records</b> across 24 zones in 6 Indian cities</li>
+          <li><b>61.9% RMSE reduction</b> over a lag-1 baseline, validated on a forward time split to rule out leakage</li>
+          <li>SHAP-based per-zone explainability layer plus a custom 5-year warming-slope detector for early risk flagging</li>
+          <li>Automated daily-refresh Streamlit dashboard with live geospatial visualization via Folium</li>
+        </ul>
+        <div class="stack"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">Streamlit</span><span class="tag">Folium</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header-flex">
+        <div style="flex:1; min-width:0;">
+          <div class="project-title-row">
+            <div class="project-title">Transformer from Scratch — Neural Machine Translation</div>
+            <span class="status-ongoing">ongoing</span>
+          </div>
+          <div class="project-links-visible">
+            <a href="https://github.com/arushiiii18/transformer-from-scratch-pytorch" target="_blank">github ↗</a>
+          </div>
+          <div class="project-summary">Paper-accurate "Attention Is All You Need" implementation built entirely from raw PyTorch tensors — no HuggingFace shortcuts.</div>
+        </div>
+        <button class="expand-btn" onclick="toggleProject(this)" aria-label="Expand details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 5.5l6.5 6 6.5-6"/></svg>
+        </button>
+      </div>
+      <div class="project-details">
+        <ul class="project-bullets">
+          <li>Full encoder-decoder built from raw PyTorch tensors — <b>custom multi-head attention, positional encoding, and masking, no built-in transformer modules</b></li>
+          <li>Beam search decoding, evaluated with SacreBLEU on the Multi30k German-English benchmark</li>
+          <li>Ablation studies isolating the contribution of individual architecture components</li>
+          <li>Attention-visualization notebooks showing what each head actually learned</li>
+        </ul>
+        <div class="stack"><span class="tag">PyTorch</span><span class="tag">NumPy</span><span class="tag">SacreBLEU</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header-flex">
+        <div style="flex:1; min-width:0;">
+          <div class="project-title-row">
+            <div class="project-title">CycleSphere — Menstrual Health Analytics</div>
+          </div>
+          <div class="project-links-visible">
+            <a href="https://github.com/arushiiii18/cyclesphere-analytics" target="_blank">github ↗</a>
+            <a href="https://cyclesphere-analytics-yvhtyqq2z72gjcbbem32e4.streamlit.app/" target="_blank">live demo ↗</a>
+          </div>
+          <div class="project-summary">Menstrual health analytics platform clustering cycle and lifestyle data, with an interactive what-if simulator.</div>
+        </div>
+        <button class="expand-btn" onclick="toggleProject(this)" aria-label="Expand details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 5.5l6.5 6 6.5-6"/></svg>
+        </button>
+      </div>
+      <div class="project-details">
+        <ul class="project-bullets">
+          <li>KMeans clustering, silhouette-optimized at k=2, on real cycle and lifestyle data</li>
+          <li>Kruskal-Wallis testing returned a <b>null result across all three lifestyle factors</b> — reported as-is instead of tuned to produce a positive finding</li>
+          <li>Full ETL pipeline plus an interactive what-if simulator, deployed on Streamlit</li>
+        </ul>
+        <div class="stack"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">KMeans</span><span class="tag">Streamlit</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header-flex">
+        <div style="flex:1; min-width:0;">
+          <div class="project-title-row">
+            <div class="project-title">Trader Sentiment Analysis</div>
+          </div>
+          <div class="project-links-visible">
+            <a href="https://github.com/arushiiii18/trader-sentiment-analysis" target="_blank">github ↗</a>
+          </div>
+          <div class="project-summary">Segments Hyperliquid trader behavior against Bitcoin Fear & Greed regimes to expose distinct strategy archetypes.</div>
+        </div>
+        <button class="expand-btn" onclick="toggleProject(this)" aria-label="Expand details">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 5.5l6.5 6 6.5-6"/></svg>
+        </button>
+      </div>
+      <div class="project-details">
+        <ul class="project-bullets">
+          <li>Analyzed Hyperliquid trader behavior against Bitcoin Fear & Greed Index regimes</li>
+          <li>Traced a <b>catastrophic timestamp-parsing bug</b> back to major upstream data loss, then rebuilt the ingestion pipeline from scratch</li>
+          <li>K-Means (k=3) segmentation separating contrarian from momentum-driven strategies</li>
+        </ul>
+        <div class="stack"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">K-Means</span></div>
+      </div>
+    </div>
+
+    <div class="more-projects">
+      <div class="more-projects-left">
+        <div class="more-projects-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </div>
+        <div>
+          <div class="more-projects-title">More on GitHub</div>
+          <div class="more-projects-sub">Smaller experiments, half-finished rabbit holes, and everything not featured here</div>
+        </div>
+      </div>
+      <a class="btn btn-ghost" href="https://github.com/arushiiii18" target="_blank">View profile ↗</a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="section-num">02</span><h2>Skills &amp; Tech Stack</h2></div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-list">Python · SQL · C++ · C · TypeScript</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">ML &amp; Deep Learning</div>
+        <div class="skill-list">Scikit-learn · XGBoost · PyTorch · Transformer Architecture · NLP · Beam Search · Model Evaluation · Feature Engineering</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">LLM / Agentic Systems</div>
+        <div class="skill-list">LangChain · Groq · Claude · Prompt-conditioned Agent Design · FastAPI · Pydantic</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data Analytics &amp; Visualization</div>
+        <div class="skill-list">Pandas · NumPy · SHAP · Plotly · Power BI · Tableau · Folium</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Databases</div>
+        <div class="skill-list">MySQL · SQLite · MongoDB</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools, Testing &amp; Cloud</div>
+        <div class="skill-list">Git · GitHub · pytest · Streamlit · Render · Vercel · AWS · VS Code</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head"><span class="section-num">03</span><h2>Education</h2></div>
+    <div class="hero-sub" style="margin-top:0; margin-bottom:26px;">
+      <b>KIET Group of Institutions</b> — B.Tech, Computer Science & Engineering (AI/ML) · 2024–2028
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">8.27</div><div class="stat-label">CGPA / 4 SEMESTERS</div></div>
+      <div class="stat"><div class="stat-num">100+</div><div class="stat-label">LEETCODE SOLVED</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">AWS CERTIFICATIONS</div></div>
+    </div>
+  </section>
+
+  <section id="outside">
+    <div class="section-head"><span class="section-num">04</span><h2>Outside the Classroom</h2></div>
+
+    <div class="otc-block">
+      <h3>Certifications</h3>
+      <div class="cert-row">
+        <span class="cert">AWS Certified Cloud Practitioner</span>
+        <span class="cert">AWS Certified Data Engineer – Associate</span>
+        <span class="cert">AWS Certified Machine Learning – Associate</span>
+      </div>
+    </div>
+
+    <div class="otc-block">
+  <h3>Open Source</h3>
+
+  <div class="oss-item">
+    <div class="oss-top">
+      <div class="oss-repo">
+        <a href="https://github.com/render-engine/render-engine/pull/1234" target="_blank">
+          render-engine — PR #1234 ↗
+        </a>
+      </div>
+
+      <div class="oss-status">merged</div>
+    </div>
+
+    <div class="oss-desc">
+      Added include/exclude sitemap filtering, merged after a couple rounds of maintainer review.
+    </div>
+  </div>
+
+  <div class="otc-note">
+    First OSS contribution — small in scope, but a solid intro to real review cycles.
+  </div>
+</div>
+
+  </section>
+
+  <section id="contact">
+    <div class="section-head"><span class="section-num">05</span><h2>Contact</h2></div>
+    <p class="contact-copy">
+      Got an opportunity, an interesting dataset, or just want to talk AI, analytics, or research papers? I'd love to hear from you.
+    </p>
+    <div class="contact-row">
+      <a class="btn btn-fill" href="mailto:arushisagar18@gmail.com">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3h13A1.5 1.5 0 0116 4.5v7A1.5 1.5 0 0114.5 13h-13A1.5 1.5 0 010 11.5v-7A1.5 1.5 0 011.5 3zm.2 1L8 8.4 14.3 4H1.7zM1 5.1v6.4c0 .3.2.5.5.5h13a.5.5 0 00.5-.5V5.1L8.3 9.6a.5.5 0 01-.6 0L1 5.1z"/></svg>
+        Email
+      </a>
+      <a class="btn btn-fill" href="https://github.com/arushiiii18" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-fill" href="https://www.linkedin.com/in/arushi-sagar/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708C16 15.487 15.474 16 14.825 16H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.52 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.174-.432.57-.879 1.235-.879.87 0 1.219.662 1.219 1.634v3.866h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-tagline">curiosity is what fuels me</div>
+  <div class="footer-text">
+    <a href="mailto:arushisagar18@gmail.com">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3h13A1.5 1.5 0 0116 4.5v7A1.5 1.5 0 0114.5 13h-13A1.5 1.5 0 010 11.5v-7A1.5 1.5 0 011.5 3zm.2 1L8 8.4 14.3 4H1.7zM1 5.1v6.4c0 .3.2.5.5.5h13a.5.5 0 00.5-.5V5.1L8.3 9.6a.5.5 0 01-.6 0L1 5.1z"/></svg>
+      arushisagar18@gmail.com
+    </a>
+  </div>
+</footer>
+
+<script>
+  const grid = document.getElementById('heatgrid');
+  const cols = window.innerWidth < 640 ? 16*8 : 28*8;
+  for(let i=0;i<cols;i++){
+    const c = document.createElement('div');
+    c.className='cell';
+    const r = Math.random();
+    let color;
+    if(r<0.4) color='#8DA47E';
+    else if(r<0.65) color='#6FA3DA';
+    else if(r<0.88) color='#E6C68B';
+    else color='#C88A54';
+    c.style.background = color;
+    c.style.animationDelay = (Math.random()*4).toFixed(2)+'s';
+    c.style.opacity = (0.25+Math.random()*0.6).toFixed(2);
+    grid.appendChild(c);
+  }
+
+  function toggleProject(btn){
+    btn.classList.toggle('open');
+    const details = btn.closest('.project').querySelector('.project-details');
+    details.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
